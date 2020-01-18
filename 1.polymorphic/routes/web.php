@@ -16,14 +16,6 @@ Route::get('/', function () {
 });
 
 
-// Route::get('/articles/{article}', 'ArticleController@show');
-// Route::get('/articles', 'ArticleController@index');
-
-Route::resource(
-    'articles',
-    'ArticleController'
-)->middleware('auth');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')
