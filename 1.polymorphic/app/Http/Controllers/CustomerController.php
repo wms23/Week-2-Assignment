@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -15,6 +16,22 @@ class CustomerController extends Controller
     public function index()
     {
         //
+    }
+
+    public function loginForm()
+    {
+        return view('customer.login');
+    }
+
+    public function login(LoginRequest $request)
+    {
+        \Auth::guard('customer')->attempt($request->validated());
+        
+        if (\Auth::guard('customer')->check()) {
+            return \Auth::guard('customer')->user();
+        } else {
+            return "Login Fail";
+        }
     }
 
     /**

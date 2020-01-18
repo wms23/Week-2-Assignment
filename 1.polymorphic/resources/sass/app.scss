@@ -4,5 +4,15 @@
 // Variables
 @import 'variables';
 
+form {
+    label {
+      color : Red;
+    }
+  
+    input { color : Green}
+  
+  
+  }
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
