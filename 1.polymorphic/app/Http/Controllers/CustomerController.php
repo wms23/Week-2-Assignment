@@ -26,9 +26,9 @@ class CustomerController extends Controller
     public function login(LoginRequest $request)
     {
         \Auth::guard('customer')->attempt($request->validated());
-        
+
         if (\Auth::guard('customer')->check()) {
-            return \Auth::guard('customer')->user();
+            return redirect(route('post.index'));
         } else {
             return "Login Fail";
         }

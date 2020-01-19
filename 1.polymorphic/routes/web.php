@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index')
     ->name('home')
     ->middleware('auth');
 
+Route::resource('post', 'PostController');
+
 Route::get('/customer/login', 'CustomerController@loginForm');
 
 Route::post('/customer/login', 'CustomerController@login');
