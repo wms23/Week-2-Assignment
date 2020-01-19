@@ -28,14 +28,14 @@ class AuthServiceProvider extends ServiceProvider
 
         //
 
-        Gate::before(function ($user, $ability) {
-            if ($user->id == 3) {
-                return true;
-            }
-        });
+        // Gate::before(function ($user, $ability) {
+        //     if ($user->id == 3) {
+        //         return true;
+        //     }
+        // });
 
         Gate::define('update-post', function ($user, $post) {
-            return $user->id == 2;
+            return $user->id == $post->author_id;
 
         });
 

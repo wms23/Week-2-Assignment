@@ -37,7 +37,10 @@ class PostController extends Controller
      */
     public function store(PostSave $request)
     {
+        $customer = \Auth::guard('customer')->user();
+        $customer->posts()->create($request->validated());
 
+        return redirect(route('post.index'));
     }
 
     /**
@@ -59,7 +62,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -69,9 +72,17 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(PostSave $request, Post $post)
     {
-        //
+        $customer = \Auth::guard('customer')->user();
+
+        if (!\Gate::forUser($customer)->allows('update-post', $post)) {
+            abort(403);
+        }
+
+        $post->update($request->validated());
+        
+        return redirect(route('post.index'));
     }
 
     /**

@@ -18,7 +18,7 @@
             </div>
             <div class="card-action">
                 <a href="/post/{{$post->id}}">View Detail</a>
-                <a href="#">Edit</a>
+                <a href="{{route('post.edit',$post->id)}}">Edit</a>
             </div>
         </div>
         @endforeach
