@@ -12,4 +12,9 @@ class Post extends Model
     {
         return $this->morphMany(Comment::class, 'comment_table');
     }
+
+    public function author()
+    {
+        return $this->belongsTo(Customer::class, 'author_id');
+    }
 }

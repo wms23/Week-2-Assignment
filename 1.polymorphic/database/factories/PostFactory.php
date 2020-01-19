@@ -6,7 +6,10 @@ use App\Post;
 use Faker\Generator as Faker;
 
 $factory->define(Post::class, function (Faker $faker) {
+
     return [
-        'content' => $faker->paragraph()
+        'author_id' => App\Customer::get()->random()->id,
+        'title' => $faker->sentence(),
+        'content' => $faker->paragraph(),
     ];
 });
