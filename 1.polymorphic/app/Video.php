@@ -1,14 +1,14 @@
 <?php
 
-namespace App;
+namespace app;
 
-use Illuminate\Database\Eloquent\Model;
+use illuminate\database\eloquent\model;
 
-class Video extends Model
+class video extends model
 {
     //
     public function comments()
     {
-        return $this->morphMany(Comment::class, 'comment_table');
+        return $this->morphmany(comment::class, 'comment_table');
     }
 }

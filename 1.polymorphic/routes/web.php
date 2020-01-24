@@ -23,6 +23,8 @@ Route::get('/home', 'HomeController@index')
 
 Route::resource('post', 'PostController');
 
-Route::get('/customer/login', 'CustomerController@loginForm');
+Route::resource('list', 'ToDoListController');
+
+Route::get('/customer/login ', 'CustomerController@loginForm');
 
 Route::post('/customer/login', 'CustomerController@login');

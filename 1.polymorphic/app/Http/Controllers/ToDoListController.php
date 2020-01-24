@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostSave;
-use App\Post;
+use App\Http\Requests\ToDoListSave;
+use App\ToDoList;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class ToDoListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = \App\Post::all();
-        return view('post.index', compact('posts'));
+        //
     }
 
     /**
@@ -26,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        //
     }
 
     /**
@@ -35,21 +34,22 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostSave $request)
+    public function store(ToDoListSave $request)
     {
-        $customer = \Auth::guard('customer')->user();
-        $customer->posts()->create($request->validated());
+        //
+        $user = \Auth::guard('web')->user();
+        $user->lists()->create($request->validated());
 
-        return redirect(route('post.index'));
+        return redirect(route('home'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  \App\ToDoList  $toDoList
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(ToDoList $toDoList)
     {
         //
     }
@@ -57,41 +57,33 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  \App\ToDoList  $toDoList
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(ToDoList $toDoList)
     {
-        return view('post.edit', compact('post'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $post
+     * @param  \App\ToDoList  $toDoList
      * @return \Illuminate\Http\Response
      */
-    public function update(PostSave $request, Post $post)
+    public function update(Request $request, ToDoList $toDoList)
     {
-        $customer = \Auth::guard('customer')->user();
-
-        if (!\Gate::forUser($customer)->allows('update-post', $post)) {
-            abort(403);
-        }
-
-        $post->update($request->validated());
-
-        return redirect(route('post.index'));
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Post  $post
+     * @param  \App\ToDoList  $toDoList
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(ToDoList $toDoList)
     {
         //
     }

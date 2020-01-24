@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $toDoLists = \App\ToDoList::where('user_id',\Auth::guard('web')->user()->id)->get();
+
+        return view('home', compact('toDoLists'));
+//        return view('home');
     }
 }

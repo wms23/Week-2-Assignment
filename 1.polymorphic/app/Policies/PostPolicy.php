@@ -12,7 +12,7 @@ class PostPolicy
 
 
     public function before(User $user){
-        
+
     }
 
     /**
